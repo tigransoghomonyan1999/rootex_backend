@@ -20,4 +20,4 @@ mongoose.connect(
   () => console.log("connected to DB")
 );
 
-app.listen(port, () => console.log(`App started on port ${port}`));
+app.listen(process.env.PORT, port, () => console.log(`App started on port ${port}`));
