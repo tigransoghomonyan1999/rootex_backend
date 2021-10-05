@@ -17,7 +17,7 @@ const login = async (req, res) => {
           email: user[0].email,
           id: user[0].id,
         },
-        process.env.JWT_KEY,
+        'somesupersecretkey',
         {
           expiresIn: "1h",
         }
