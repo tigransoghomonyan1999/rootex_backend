@@ -39,11 +39,15 @@ const verify = async (req, res) => {
       jwt.verify(req.body.token, process.env.JWT_KEY, (err, verifiedJwt) => {
         if (err) {
           res.json({ isAuthorised: false });
+          res.end();
         } else {
           console.log(req.body);
           res.json({ isAuthorised: true });
+          res.end();
         }
       });
+    } else {
+      res.end();
     }
   } catch (error) {
     res.json({ isAuthorised: false });
