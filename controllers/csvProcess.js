@@ -8,7 +8,7 @@ const uploadFields = upload.fields([
 const csvProcess = async (req, res) => {
     try {   
         const pathToCsv = "../files/" + req.files.csvFile[0].filename;
-        const pyProgram = spawn('py', ['./python/main.py', pathToCsv])
+        const pyProgram = spawn('python3', ['./python/main.py', pathToCsv])
         pyProgram.stdout.on('data', (data) => {
             console.log(data.toString());
         })
