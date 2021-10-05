@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const path = require("path");
 const port = 3001;
 
 const csvProcessRoutes = require("./routes/csvProcess");
@@ -12,6 +13,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use("/static", express.static(path.join(__dirname, "files")));
+
 app.use("/api/v1/csv-process", csvProcessRoutes);
 app.use("/api/v1/login", loginRoutes);
 mongoose.connect(
@@ -20,4 +23,6 @@ mongoose.connect(
   () => console.log("connected to DB")
 );
 
-app.listen(process.env.PORT || port, () => console.log(`App started on port ${port}`));
+app.listen(process.env.PORT || port, () =>
+  console.log(`App started on port ${port}`)
+);
