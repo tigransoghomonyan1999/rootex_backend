@@ -8,6 +8,7 @@ const User = require("../models/user");
 
 const login = async (req, res) => {
   try {
+    console.log("Received to /api/v1/login");
     const user = await User.find({ email: req.body.email });
     console.log(user);
     if (user.length > 0 && user[0].password === req.body.password) {
